@@ -26,6 +26,31 @@ form {
 	border-radius: 5px;
 	border: 1px solid #ddd;
 	background-color: #f9f9f9;
+	color: #555;
+}
+
+input[type="search"] {
+	border: 2px solid #4CAF50;
+	border-radius: 5px;
+	padding: 5px;
+}
+
+input[type="search"]:focus {
+	outline: none;
+	border-color: #45a049;
+}
+
+button[type="submit"] {
+	padding: 8px 20px;
+	background-color: #4CAF50;
+	color: white;
+	border: none;
+	border-radius: 5px;
+	cursor: pointer;
+}
+
+button[type="submit"]:hover {
+	background-color: #45a049;
 }
 
 table {
@@ -74,14 +99,57 @@ th {
 .create-button {
 	display: inline-block;
 	padding: 10px 20px;
-	background-color: #4CAF50;
+	background-color: #008CBA; /* Updated color */
 	color: white;
 	text-decoration: none;
 	border-radius: 5px;
 }
 
 .create-button:hover {
-	background-color: #45a049;
+	background-color: #005f6b; /* Darker shade for hover */
+}
+
+/* New CSS for page size select */
+.page-size-container {
+	float: right;
+	margin-top: -45px;
+	margin-right: 20px;
+}
+
+.page-size-container select {
+	padding: 5px;
+	border-radius: 5px;
+	border: 1px solid #ddd;
+	background-color: #f9f9f9;
+	color: #555;
+}
+
+/* CSS for delete button */
+.delete-button {
+	background-color: #ff9999; /* Light red */
+	color: #800000; /* Dark red */
+	border: none;
+	border-radius: 5px;
+	padding: 5px 10px;
+	cursor: pointer;
+}
+
+.delete-button:hover {
+	background-color: #ffcccc; /* Lighter shade of red */
+}
+
+/* CSS for update button */
+.update-button {
+	background-color: #99ccff; /* Light blue */
+	color: #004080; /* Dark blue */
+	border: none;
+	border-radius: 5px;
+	padding: 5px 10px;
+	cursor: pointer;
+}
+
+.update-button:hover {
+	background-color: #cceeff; /* Lighter shade of blue */
 }
 </style>
 </head>
@@ -91,16 +159,18 @@ th {
 		<input type="search" name="search" />
 		<button type="submit">Search</button>
 	</form>
-	<form action="/employees" method="get">
-		<span>Page Size:</span> <select id="pageSizeSelect"
-			onChange="updatePageSize()" name="pageSize">
-			<option value="5">5</option>
-			<option value="10">10</option>
-			<option value="20">20</option>
-			<option value="50">50</option>
-			<option value="100">100</option>
-		</select>
-	</form>
+	<div class="page-size-container">
+		<form action="/employees" method="get">
+			<span>Page Size:</span> <select id="pageSizeSelect"
+				onChange="updatePageSize()" name="pageSize">
+				<option value="5">5</option>
+				<option value="10">10</option>
+				<option value="20">20</option>
+				<option value="50">50</option>
+				<option value="100">100</option>
+			</select>
+		</form>
+	</div>
 	<table>
 		<thead>
 			<tr>
@@ -129,8 +199,10 @@ th {
 					<td>${employee.hobby}</td>
 					<td>${employee.phoneNumber}</td>
 					<td>${employee.bloodGroup}</td>
-					<td><a href="/editEmployee/${employee.id}">Update</a></td>
-					<td><a href="/deleteEmployee/${employee.id}">Delete</a></td>
+					<td><a href="/editEmployee/${employee.id}"
+						class="update-button">Update</a></td>
+					<td><a href="/deleteEmployee/${employee.id}"
+						class="delete-button">Delete</a></td>
 				</tr>
 			</c:forEach>
 		</tbody>
@@ -143,8 +215,8 @@ th {
 			onclick="navigateToPage(event, currentPage + 1)">&raquo;</a>
 	</div>
 	<div class="create-container">
-		<a href="/createEmployee" class="create-button">Create Employee
-			Info</a>
+		<a href="/createEmployee" class="create-button">Add Employee
+			</a>
 	</div>
 
 	<script>

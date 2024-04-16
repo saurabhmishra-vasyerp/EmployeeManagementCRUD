@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Create Employee</title>
+<title>Add New Employee</title>
 <style>
 body {
 	font-family: Arial, sans-serif;
@@ -53,7 +53,7 @@ input[type="submit"]:hover {
 </style>
 </head>
 <body>
-	<h2>Fill Employee Information </h2>
+	<h2>Fill Information </h2>
 	<form action="/createEmployee" method="post">
 		Name: <input type="text" name="name"><br> Age: <input
 			type="number" name="age"><br> Grade: <input type="text"

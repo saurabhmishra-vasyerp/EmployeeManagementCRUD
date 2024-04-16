@@ -3,7 +3,7 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>Edit Employee</title>
+    <title>Edit Employee Details</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -45,7 +45,7 @@
     </style>
 </head>
 <body>
-    <h2>Edit Employee Details</h2>
+    <h2>Edit Details</h2>
     <form action="/updateEmployee/${employee.id}" method="post">
         <input type="hidden" name="_method" value="PUT">
         Name: <input type="text" name="name" value="${employee.name}"><br>
